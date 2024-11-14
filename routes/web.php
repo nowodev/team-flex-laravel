@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\MemberController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('wel');
 });
 
 Route::middleware([
@@ -15,3 +17,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::resource('members', MemberController::class);
+Route::resource('members', UserController::class);
