@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\UserController;
+use App\Livewire\Friends;
+use App\Livewire\Members;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,5 +19,8 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::resource('members', UserController::class)->middleware('auth');
-Route::resource('messages', MessageController::class)->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('members', Members::class)->name('members');
+    Route::get('friends', action: Friends::class)->name('friends');
+    Route::resource('messages', MessageController::class);
+});
