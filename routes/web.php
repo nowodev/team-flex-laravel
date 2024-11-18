@@ -6,7 +6,7 @@ use App\Livewire\Members;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('wel');
+    return view('welcome');
 });
 
 Route::middleware([
