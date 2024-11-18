@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,5 +19,5 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::resource('members', MemberController::class);
-Route::resource('members', UserController::class);
+Route::resource('members', UserController::class)->middleware('auth');
+Route::resource('messages', MessageController::class)->middleware('auth');
