@@ -19,6 +19,7 @@
     </head>
     <body x-data="themeSwitcher()" :class="{ 'dark': switchOn }" class="font-sans antialiased">
         <x-banner />
+        <x-wireui:notifications />
 
         <div class="min-h-screen bg-gray-100">
             @livewire('navigation-menu')
@@ -40,6 +41,7 @@
 
         @stack('modals')
 
+        <wireui:scripts />
         @livewireScripts
     </body>
 </html>
