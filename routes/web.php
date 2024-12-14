@@ -3,6 +3,8 @@
 use App\Http\Controllers\MessageController;
 use App\Livewire\Friends;
 use App\Livewire\Members;
+use App\Models\Message;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,7 +17,10 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $members = User::count();
+        $receivedMessages = Message::whereNot('user_id', auth()->id())->count();
+        $sentMessages = Message::where('user_id', auth()->id())->count();
+        return view('dashboard', compact('members', 'receivedMessages', 'sentMessages'));
     })->name('dashboard');
 });
 
