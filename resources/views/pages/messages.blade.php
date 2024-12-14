@@ -1,15 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Members') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-900 shadow-xl sm:rounded-lg p-5 space-y-4 h-[30rem] overflow-auto">
-                @foreach ($messages as $message)
-                    <div class="flex items-start gap-2.5 @if($message->user_id == auth()->id()) justify-end @else justify-start @endif">
+            <div class="bg-white dark:bg-gray-900 shadow-xl sm:rounded-lg p-5 space-y-4 h-[30rem] overflow-auto flex flex-col-reverse">
+                @foreach ($messages->reverse() as $message)
+                    <div class="flex @if($message->user_id == auth()->id()) justify-end @else justify-start @endif">
                         {{-- <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="Jese image"> --}}
                         <div class="flex flex-col gap-1 w-full max-w-[320px]">
                             <div class="flex items-center space-x-2 rtl:space-x-reverse">
@@ -18,7 +18,7 @@
                                     class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $message->created_at->diffForHumans() }}</span>
                             </div>
                             <div
-                                class="flex flex-col leading-1.5 p-4 border bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-700 @if($message->user_id == auth()->id()) border-teal-200 @else border-gray-200 @endif">
+                                class="flex flex-col leading-1.5 p-4 border bg-gray-100 rounded-e-xl rounded-es-xl dark:bg-gray-700 @if($message->user_id == auth()->id()) border-teal-200 dark:border-teal-700 @else border-gray-200 dark:border-gray-600 @endif">
                                 <p class="text-sm font-normal text-gray-900 dark:text-white">{{ $message->content }}.</p>
                             </div>
                             {{-- <span class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ $message->status }}</span> --}}
