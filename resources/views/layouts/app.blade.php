@@ -43,5 +43,24 @@
 
         <wireui:scripts />
         @livewireScripts
+
+        <script>
+            // Function to scroll messages container to bottom
+            function scrollToBottom() {
+                const messagesContainer = document.querySelector('.scroll');
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+
+            // Scroll on initial page load
+            document.addEventListener('DOMContentLoaded', scrollToBottom);
+
+            // Scroll when new messages are added
+            const messagesContainer = document.querySelector('.scroll');
+            const observer = new MutationObserver(scrollToBottom);
+            observer.observe(messagesContainer, {
+                childList: true,
+                subtree: true
+            });
+        </script>
     </body>
 </html>
