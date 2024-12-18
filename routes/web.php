@@ -1,5 +1,6 @@
 <?php
 
+use App\Events\MessageSent;
 use App\Livewire\Friends;
 use App\Livewire\Members;
 use App\Livewire\Messages;
