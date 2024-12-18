@@ -24,7 +24,7 @@
                         class="text-gray-900 dark:text-gray-100">
                         {{ __('Friends') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('messages.index') }}" :active="request()->routeIs('messages.index')"
+                    <x-nav-link href="{{ route('messages') }}" :active="request()->routeIs('messages')"
                         class="text-gray-900 dark:text-gray-100">
                         {{ __('Messages') }}
                     </x-nav-link>

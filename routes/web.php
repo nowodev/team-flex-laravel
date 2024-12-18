@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\MessageController;
 use App\Livewire\Friends;
 use App\Livewire\Members;
+use App\Livewire\Messages;
 use App\Models\Message;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -27,5 +27,5 @@ Route::middleware([
 Route::middleware('auth')->group(function () {
     Route::get('members', Members::class)->name('members');
     Route::get('friends', action: Friends::class)->name('friends');
-    Route::resource('messages', MessageController::class);
+    Route::get('messages', Messages::class)->name('messages');
 });

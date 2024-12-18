@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->longText('content');
+            $table->longText('message');
             $table->enum('status', ['sent', 'delivered', 'read'])->default('sent');
             $table->timestamps();
         });
