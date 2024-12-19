@@ -9,10 +9,12 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Namu\WireChat\Traits\Chatable;
 
 class User extends Authenticatable
 {
     use HasApiTokens;
+    use Chatable;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
@@ -83,5 +85,11 @@ class User extends Authenticatable
     public function isFollowing(User $user)
     {
         return auth()->user()->following->contains($user);
+    }
+
+    // Custom logic for allowing chat creation
+    public function canCreateChats(): bool
+    {
+        return true;
     }
 }
